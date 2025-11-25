@@ -9,9 +9,9 @@ dotenv.config();
 
 router.post('/register', async (req, res) => {
 
-	const { email, password, name } = req.body;
+	const { email, password, name, role } = req.body;
 
-	if (!email || !password || !name) {
+	if (!email || !password || !name || !role) {
 		return res.status(400).json({ error: 'All fields are required' });
 	}
 
@@ -27,6 +27,7 @@ router.post('/register', async (req, res) => {
 		newUser.email = email;
 		newUser.password = hashedPassword;
 		newUser.name = name;
+		newUser.role = role;
 		await newUser.save();
 		return res.status(201).json({ message: 'User registered successfully' });
 	} catch (error) {

@@ -1,26 +1,26 @@
 const { Schema, model } = require('mongoose');
 
 const accessSchema = new Schema({
-	user:{
+	user: {
 		type: Schema.Types.ObjectId,
 		ref: 'User',
 		required: true,
 	},
-	resource:{
+	resource: {
 		type: String,
 		enum: ['project', 'vehicle', 'collection'],
 		required: true,
 	},
-	resourceId:{
+	resourceId: {
 		type: Schema.Types.ObjectId,
-		required: true,
+		required: false,
 	},
-	action:{
+	action: {
 		type: String,
 		enum: ['create', 'read', 'update', 'delete'],
 		required: true,
 	},
-	timestamp:{
+	timestamp: {
 		type: Date,
 		default: Date.now,
 	}
